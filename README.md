@@ -1,4 +1,8 @@
-# catkin_ws
+# FRA502 ROS FINAL PROJECT 
+## Develop by
+Mr. Napat Suwanaksorn
+
+ID:62340500016
 ## Video link : 
 https://drive.google.com/drive/folders/1t2_-zJRBF0eF6T8HFLFMkPVAPhJRcjOz?usp=sharing
 ## คู่มือการใช้งาน : 
