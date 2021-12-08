@@ -1,6 +1,6 @@
 # FRA502 ROS FINAL PROJECT 
 ## Develop by
-Mr. Napat Suwanaksorn
+Mr. Napat Suwanugsorn
 
 ID:62340500016
 ## Video link : 
