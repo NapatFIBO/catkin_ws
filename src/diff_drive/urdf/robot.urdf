@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+
+<robot name="Cafe_bot">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.065"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+         <box size="0.2 0.2 0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.065"/>
+    </collision>
+    <inertial>
+      <mass value="40"/>
+      <inertia  ixx="0.1666666666666667" ixy="0.0" ixz="0.0" iyy="0.1666666666666667" iyz="0.0" izz="0.2666666666666667"/>
+    </inertial>
+  </link>
+  
+  <link name="lwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="4.333333333333334e-05" ixy="0.0" ixz="0.0" iyy="4.333333333333334e-05" iyz="0.0" izz="4.5e-05"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_to_lwheel" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="lwheel"/>
+    <origin xyz="0 0.07 0.015" rpy="-1.5708 0 0"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+    <limit effort="1000" velocity="1000"/>
+  </joint>
+  
+  <link name="rwheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="4.333333333333334e-05" ixy="0.0" ixz="0.0" iyy="4.333333333333334e-05" iyz="0.0" izz="4.5e-05"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_to_rwheel" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="rwheel"/>
+    <origin xyz="0 -0.07 0.015" rpy="-1.5708 0 0"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+    <limit effort="1000" velocity="1000"/>
+  </joint>
+
+  <link name="sfwheel">
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="3.6e-05" ixy="0.0" ixz="0.0" iyy="3.6e-05" iyz="0.0" izz="3.6e-05"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_to_sfwheel" type="fixed">
+    <axis xyz="1 1 1"/>
+    <parent link="base_link"/>
+    <child link="sfwheel"/>
+    <origin xyz="0.07 0 0.015" rpy="-1.5708 0 0"/>
+  </joint>
+
+  <link name="srwheel">
+    <visual>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="3.6e-05" ixy="0.0" ixz="0.0" iyy="3.6e-05" iyz="0.0" izz="3.6e-05"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_to_srwheel" type="fixed">
+    <axis xyz="1 1 1"/>
+    <parent link="base_link"/>
+    <child link="srwheel"/>
+    <origin xyz="-0.07 0 0.015" rpy="-1.5708 0 0"/>
+  </joint>
+
+  <link name="Lear">
+    <visual>
+      <geometry>
+        <box size="0.05 0.025 0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.05 0.025 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="2.6041666666666672e-05" ixy="0.0" ixz="0.0" iyy="4.166666666666667e-05" iyz="0.0" izz="2.6041666666666672e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_Lear" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="Lear"/>
+    <origin xyz="0.06 -0.06 0.115" rpy="0 -0.785 -1.5708"/>
+  </joint>
+
+  <link name="Rear">
+    <visual>
+      <geometry>
+        <box size="0.05 0.025 0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.05 0.025 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="2.6041666666666672e-05" ixy="0.0" ixz="0.0" iyy="4.166666666666667e-05" iyz="0.0" izz="2.6041666666666672e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_Rear" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="Rear"/>
+    <origin xyz="0.06 0.06 0.115" rpy="0 -0.785 -1.5708"/>
+  </joint>
+
+  <link name="Reye">
+    <visual>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="2.5000000000000005e-05" ixy="0.0" ixz="0.0" iyy="2.5000000000000005e-05" iyz="0.0" izz="2.5000000000000005e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_Reye" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="Reye"/>
+    <origin xyz="0.1 0.06 0.065" rpy="0 -0.785 -1.5708"/>
+  </joint>
+
+  <link name="Leye">
+    <visual>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="2.5000000000000005e-05" ixy="0.0" ixz="0.0" iyy="2.5000000000000005e-05" iyz="0.0" izz="2.5000000000000005e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_Leye" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="Leye"/>
+    <origin xyz="0.1 -0.06 0.065" rpy="0 0 0"/>
+  </joint>
+
+  <link name="Tail">
+    <visual>
+      <geometry>
+        <box size="0.025 0.025 0.3"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.025 0.025 0.3"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0037760416666666663" ixy="0.0" ixz="0.0" iyy="0.0037760416666666663" iyz="0.0" izz="5.2083333333333343e-05"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_Tail" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="Tail"/>
+    <origin xyz="0 0 0.265" rpy="0 0 0"/>
+  </joint>
+
+  <link name="Tray">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.0007083333333333335" ixy="0.0" ixz="0.0" iyy="0.0007083333333333335" iyz="0.0" izz="0.0013333333333333335"/>
+    </inertial>
+  </link>
+
+  <joint name="Tail_to_Tray" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="Tail"/>
+    <child link="Tray"/>
+    <!-- <origin xyz="-0.08 0 0.13" rpy="0 0 0"/> -->
+    <origin xyz="0 0 0.175" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- Hokuyo Laser -->
+  <link name="hokuyo_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://diff_drive/model/world/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.074 0 0.1" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="hokuyo_link"/>
+  </joint>
+
+
+
+  <!-- transmission -->
+  <transmission name="lwheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_lwheel">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="base_to_lwheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
+    </joint>
+  </transmission>
+
+  <transmission name="rwheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_rwheel">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="base_to_rwheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>  
+    </joint>
+  </transmission>
+
+  <!-- hokuyo -->
+  <gazebo reference="hokuyo_link">
+    <sensor type="gpu_ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+        <topicName>scan</topicName>
+        <frameName>hokuyo_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+
+
+
+  <!-- ROS Control plugin for Gazebo -->
+  <!-- <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo> -->
+
+  <gazebo reference="base_link">
+    <material>
+      Gazebo/White
+    </material>
+  </gazebo>
+
+  <gazebo reference="lwheel">
+    <mu1>100000000</mu1>
+    <mu2>100000000</mu2>
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="rwheel">
+    <mu1>100000000</mu1>
+    <mu2>100000000</mu2>
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="sfwheel">
+    <mu1>0.0000001</mu1>
+    <mu2>0.0000001</mu2>
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="srwheel">
+    <mu1>0.0000001</mu1>
+    <mu2>0.0000001</mu2>
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Lear">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Rear">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Leye">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Reye">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Tail">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+  <gazebo reference="Tray">
+    <material>
+      Gazebo/Black
+    </material>
+  </gazebo>
+
+</robot>

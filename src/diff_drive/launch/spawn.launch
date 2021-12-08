@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find diff_drive)/urdf/diff.urdf'" />
+    
+    <arg name="x" default="-1"/>
+    <arg name="y" default="-1"/>
+    <arg name="z" default="0.1"/>
+    
+    <node name="bot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model mybot -x $(arg x) -y $(arg y) -z $(arg z)" />
+                 
+    <!-- load the controllers -->
+    <rosparam file="$(find diff_drive)/config/config.yaml" command="load"/>
+    <node name="controller_spawner" pkg ="controller_manager" type="spawner" args="joint_state_controller mobile_base_controller"/>
+    <!-- converts joint states to TF transforms -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    </node>
+
+
+</launch>
